@@ -1,0 +1,9 @@
+.header {
+  & {
+    @include center();
+    height: 20px;
+  }
+  &__title {
+    
+  }
+}
