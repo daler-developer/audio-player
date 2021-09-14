@@ -3,8 +3,14 @@
     max-width: 400px;
     min-height: 600px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 0 20px;
     box-shadow: 0 0 20px $color-black-02;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
   }
 }
