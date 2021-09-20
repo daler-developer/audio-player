@@ -1,6 +1,7 @@
 @import './reset';
 @import './variables';
 @import './mixins';
+@import './icon-font';
 
 @import './blocks/app';
 @import './blocks/header';
@@ -8,3 +9,6 @@
 @import './blocks/controllers';
 @import './blocks/native-audio';
 @import './blocks/native-file-upload';
+@import './blocks/slider';
+@import './blocks/audio-list';
+@import './blocks/shade';

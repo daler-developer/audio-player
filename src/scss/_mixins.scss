@@ -7,3 +7,15 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin gap-h($size: 10px) {
+  &:not(:nth-child(1)) {
+    margin: 0 0 0 $size;
+  }
+}
+
+@mixin gap-v($size: 10px) {
+  &:not(:nth-child(1)) {
+    margin: $size 0 0 0;
+  }
+}

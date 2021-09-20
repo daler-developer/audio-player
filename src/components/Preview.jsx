@@ -1,10 +1,23 @@
-const Preview = () => {
+import { connect } from 'react-redux'
+import { audios, selectSelectedAudioIndex } from 'redux/features/playerReducer'
+
+
+const Preview = (props) => {
   return (
     <img
       className={'preview'}
-      src={'https://picsum.photos/id/237/300/300'}
+      src={props.currentAudio.img}
     />
   )
 }
 
-export default Preview
+const mapStateToProps = (state) => ({
+  currentAudio: audios[selectSelectedAudioIndex(state)]
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Preview)
+

@@ -1,22 +1,26 @@
 import { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
-import { selectAudioSrc, selectIsPaused } from 'redux/features/playerReducer'
+import { audios, selectIsMuted, selectIsPaused, selectSelectedAudioIndex } from 'redux/features/playerReducer'
 
 
 const NativeAudio = (props) => {
   const audioRef = useRef(null)
 
   useEffect(() => {
-    if (props.isPaused) {
+    audioRef.current.volume = props.isMuted ? 0 : 1; 
+  }, [props.isMuted])
+
+  useEffect(() => {
+    if (!props.isPaused) {
       audioRef.current.play()
     } else {
       audioRef.current.pause()
     }
-  }, [props.isPaused])
+  }, [props.isPaused, props.selectedAudioIndex])
 
   return (
     <audio
-      src={props.src}
+      src={props.currentAudio.src}
       controls
       className={'native-audio'}
       ref={audioRef}
@@ -27,11 +31,11 @@ const NativeAudio = (props) => {
 
 const mapStateToProps = (state) => ({
   isPaused: selectIsPaused(state),
-  src: selectAudioSrc(state)
+  currentAudio: audios[selectSelectedAudioIndex(state)],
+  selectedAudioIndex: selectSelectedAudioIndex(state),
+  isMuted: selectIsMuted(state)
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(NativeAudio)

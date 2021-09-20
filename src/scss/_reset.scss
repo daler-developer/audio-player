@@ -32,4 +32,16 @@ h5, .h5 {
 button {
   border: none;
   outline: none;
+  cursor: pointer;
+  background-color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
 }

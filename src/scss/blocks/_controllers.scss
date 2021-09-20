@@ -1,18 +1,32 @@
 .controllers {
   & {
-    height: 50px;
+    padding: 0 30px;
+    height: 90px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
   }
   &__center {
-    
+    display: flex;
+    align-items: center;
+  }
+  &__prev-btn {
+    @include center;
+  }
+  &__next-btn {
+    @include center;
   }
   &__play-pause-btn {
-    width: 40px;
-    height: 40px;
+    @include center;
+    margin: 0 20px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: blue;
+    background-color: rgb(228, 35, 1);
     color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.295);
+  }
+  &__icon {
+    font-size: 20px;
   }
 }

@@ -1,0 +1,38 @@
+.audio-list {
+  & {
+    background-color: $color-white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all .2s ease-in;
+    z-index: 1000;
+    padding: 5px;
+  }
+  &--hidden {
+    transform: translateY(100%);
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+  &__audio {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.11);
+    }
+  }
+  &__audio-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+  }
+  &__audio-name {
+    margin: 0 0 0 20px;
+  }
+}
