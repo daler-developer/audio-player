@@ -4,10 +4,12 @@ import { audios, selectSelectedAudioIndex } from 'redux/features/playerReducer'
 
 const Preview = (props) => {
   return (
-    <img
-      className={'preview'}
-      src={props.currentAudio.img}
-    />
+    <div className={'preview'}>
+      <img
+        className={'preview__img'}
+        src={props.currentAudio.img}
+      />
+    </div>
   )
 }
 

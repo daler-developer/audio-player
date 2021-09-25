@@ -1,10 +1,22 @@
 import { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
-import { audios, selectIsMuted, selectIsPaused, selectSelectedAudioIndex } from 'redux/features/playerReducer'
+import { audios, selectIsMuted, selectIsPaused, selectSelectedAudioIndex, setSelectedAudioIndex, setCurrentAudioDuration } from 'redux/features/playerReducer'
 
 
 const NativeAudio = (props) => {
   const audioRef = useRef(null)
+
+  const handleEnded = () => {
+    if ((props.selectedAudioIndex + 1) === audios.length) {
+      props.setSelectedAudioIndex({ to: 0 })
+    } else {
+      props.setSelectedAudioIndex({ to: props.selectedAudioIndex + 1 })
+    }
+  }
+
+  const handleDurationChange = (e) => {
+    props.setCurrentAudioDuration({ to: audioRef.current.duration })
+  }
 
   useEffect(() => {
     audioRef.current.volume = props.isMuted ? 0 : 1; 
@@ -24,6 +36,8 @@ const NativeAudio = (props) => {
       controls
       className={'native-audio'}
       ref={audioRef}
+      onEnded={handleEnded}
+      onDurationChange={handleDurationChange}
     >
     </audio>
   )
@@ -36,6 +50,6 @@ const mapStateToProps = (state) => ({
   isMuted: selectIsMuted(state)
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = { setSelectedAudioIndex, setCurrentAudioDuration }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NativeAudio)

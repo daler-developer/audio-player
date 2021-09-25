@@ -1,9 +1,29 @@
 .header {
   & {
-    @include center();
-    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
   }
-  &__title {
-    
+  & > * {
+    width: 33.33333%;
+  }
+  &__left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  &__center {
+    @include center;
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  &__icon {
+    font-size: 20px;
+  }
+  &__btn {
+    @include center;
   }
 }

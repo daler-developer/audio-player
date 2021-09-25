@@ -1,24 +1,31 @@
 .slider {
   & {
-    height: 40px;
-    display: flex;
-    align-items: center;
+    padding: 15px 0 0;
+  }
+  &__progress-wrapper {
+    padding: 0 10px;
   }
   &__progress {
     height: 3px;
     width: 100%;
-    background-color: rgb(55, 55, 233);
+    background-color: $color-grey;
     position: relative;
   }
   &__move-circle {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     position: absolute;
     left: 0;
     top: 50%;
-    transform: translateY(-50%);
-    background-color: rgb(22, 136, 212);
+    transform: translateY(-50%) translateX(-50%);
+    background-color: $color-grey;
     cursor: pointer;
+  }
+  &__times {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }

@@ -1,0 +1,10 @@
+.audio-info {
+  & {
+    text-align: center;
+    padding: 20px 0;
+  }
+  &__audio-author {
+    display: block;
+    margin-top: 5px;
+  }
+}

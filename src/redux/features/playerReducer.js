@@ -12,16 +12,19 @@ import sheLovesYouImg from 'audios/she-loves-you/preview.jpg'
 export const audios = [
   {
     name: 'Shape Of You',
+    author: 'Ed Sheeran',
     src: shapeOfYouAudio,
     img: shapeOfYouImg
   },
   {
     name: 'Another Love',
+    author: 'Tom Odell',
     src: anotherLoveAudio,
     img: anotherLoveImg
   },
   {
     name: 'She loves you',
+    author: 'Slava Marlow',
     src: sheLovesYouAudio,
     img: sheLovesYouImg
   }
@@ -33,7 +36,8 @@ const initialState = {
   selectedAudioIndex: 2,
   audioListVisibility: false,
   shadeVisibility: false,
-  isMuted: false
+  isMuted: false,
+  currentAudioDuration: null
 }
 
 const playerSlice = createSlice({
@@ -55,6 +59,9 @@ const playerSlice = createSlice({
     },
     toggleIsMuted(state, action) {
       state.isMuted = !state.isMuted
+    },
+    setCurrentAudioDuration(state, action) {
+      state.currentAudioDuration = action.payload.to
     }
   }
 })
@@ -79,7 +86,10 @@ export const selectIsMuted = (state) => {
   return state.player.isMuted
 }
 
+export const selectCurrentAudioDuration = (state) => {
+  return state.player.currentAudioDuration
+}
 
-export const { toggleIsPaused, setSelectedAudioIndex, toggleIsMuted, toggleAudioListVisibility, toggleShadeVisibility } = playerSlice.actions
+export const { toggleIsPaused, setSelectedAudioIndex, toggleIsMuted, toggleAudioListVisibility, toggleShadeVisibility, setCurrentAudioDuration } = playerSlice.actions
 
 export default playerSlice.reducer

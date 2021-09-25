@@ -4,7 +4,7 @@
     height: 90px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
   }
   &__center {
     display: flex;
@@ -23,10 +23,12 @@
     height: 50px;
     border-radius: 50%;
     background-color: rgb(228, 35, 1);
-    color: white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.295);
   }
   &__icon {
     font-size: 20px;
+  }
+  &__play-icon, &__pause-icon {
+    color: $color-white;
   }
 }
