@@ -5,7 +5,7 @@ import { selectCurrentAudioDuration, selectCurrentTime } from 'redux/features/pl
 
 
 const Slider = (props) => {
-  const [mouseDown, setMouseDown] = useState(false)
+  const [pointerDown, setPointerDown] = useState(false)
 
   const circleRef = useRef(null)
   const progressRef = useRef(null)
@@ -32,7 +32,7 @@ const Slider = (props) => {
 
   useEffect(() => {
 
-    if (mouseDown) {
+    if (pointerDown) {
 
       document.addEventListener('pointerup', (e) => {
         const circleRect = circleRef.current.getBoundingClientRect()
@@ -43,7 +43,7 @@ const Slider = (props) => {
 
         document.querySelector('.native-audio').currentTime = time
 
-        setMouseDown(false)
+        setPointerDown(false)
       }, { once: true })
 
       document.addEventListener('pointermove', mouseMoveHandlerRef.current)
@@ -53,10 +53,10 @@ const Slider = (props) => {
       document.removeEventListener('pointermove', mouseMoveHandlerRef.current)
 
     }
-  }, [mouseDown])
+  }, [pointerDown])
 
   useEffect(() => {
-    if (!mouseDown) {
+    if (!pointerDown) {
       const percentage = (props.currentTime / props.duration) * 100
       circleRef.current.style.left = `${percentage}%`
     }
@@ -80,7 +80,7 @@ const Slider = (props) => {
           <motion.div
             ref={circleRef}
             className={'slider__move-circle'}
-            onPointerDown={() => setMouseDown(true)}
+            onPointerDown={() => setPointerDown(true)}
             onDragStart={(e) => e.preventDefault()}
           >
           </motion.div>
