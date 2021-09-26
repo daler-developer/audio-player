@@ -3,16 +3,16 @@ import { useEffect, useRef, useState } from 'react'
 import { connect } from 'react-redux'
 import { selectCurrentAudioDuration, selectCurrentTime } from 'redux/features/playerReducer'
 
-let mouseMoveHandler
 
 const Slider = (props) => {
   const [mouseDown, setMouseDown] = useState(false)
 
   const circleRef = useRef(null)
   const progressRef = useRef(null)
+  const mouseMoveHandlerRef = useRef(null)
 
   useEffect(() => {
-    mouseMoveHandler = (e) => {
+    mouseMoveHandlerRef.current = (e) => {
       const circleRect = circleRef.current.getBoundingClientRect()
       const progressRect = progressRef.current.getBoundingClientRect()
 
@@ -46,11 +46,11 @@ const Slider = (props) => {
         setMouseDown(false)
       }, { once: true })
 
-      document.addEventListener('pointermove', mouseMoveHandler)
+      document.addEventListener('pointermove', mouseMoveHandlerRef.current)
 
     } else {
 
-      document.removeEventListener('pointermove', mouseMoveHandler)
+      document.removeEventListener('pointermove', mouseMoveHandlerRef.current)
 
     }
   }, [mouseDown])
