@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { connect } from "react-redux"
 import { selectIsMuted, toggleIsMuted, toggleAudioListVisibility, toggleShadeVisibility } from "redux/features/playerReducer"
 
@@ -16,19 +17,19 @@ const Header = (props) => {
     <header className={'header'}>
 
       <div className={'header__left'}>
-        <button className={'header__toggle-volume-btn header__btn'} onClick={toggleAudioMuted}>
+        <motion.button className={'header__toggle-volume-btn header__btn'} onClick={toggleAudioMuted} whileTap={{ scale: .9 }}>
           <i className={`header__icon ${props.isMuted ? 'icon-volume-off' : 'icon-volume-on'}`}></i>
-        </button>
+        </motion.button>
       </div>
 
       <div className={'header__center'}>
-        <h1 className={'header__title h5'}>React Player</h1>
+        <h1 className={'header__title h5'}>Audio Player</h1>
       </div>
 
       <div className={'header__right'}>
-        <button className={'header__show-list-btn header__btn'} onClick={openList}>
+        <motion.button className={'header__show-list-btn header__btn'} onClick={openList} whileTap={{ scale: .9 }}>
           <i className={'icon-list header__icon'}></i>
-        </button>
+        </motion.button>
       </div>
 
     </header>

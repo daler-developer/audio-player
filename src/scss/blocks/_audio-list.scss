@@ -19,6 +19,7 @@
   &__audio {
     padding: 10px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     border-radius: 4px;
     cursor: pointer;
@@ -27,12 +28,60 @@
       background-color: rgba(0, 0, 0, 0.1);
     }
   }
+  &__audio-left {
+    display: flex;
+    align-items: center;
+  }
   &__audio-img {
     width: 40px;
     height: 40px;
     border-radius: 4px;
   }
+  &__audio-body {
+    padding: 0 0 0 20px;
+    display: flex;
+    flex-direction: column;
+  }
   &__audio-name {
-    margin: 0 0 0 20px;
+    color: $color-black;
+  }
+  &__audio-author {
+    font-size: 14px;
+  }
+  &__animation {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: flex-end;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+  &__animation-block {
+    @include gap-h(1px);
+    width: 33.3333%;
+    height: 5px;
+    background-color: green;
+    animation: playing 600ms ease-in infinite alternate forwards;
+
+    &:nth-child(1) {
+      animation-delay: 0ms;
+    }
+    &:nth-child(2) {
+      animation-delay: 600ms;
+    }
+    &:nth-child(3) {
+      animation-delay: 300ms;
+    }
+  }
+}
+
+@keyframes playing {
+  from {
+    height: 5%;
+  }
+  to {
+    height: 100%;
   }
 }

@@ -25,6 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-infinity:before {
+  content: "\e984";
+}
+.icon-download:before {
+  content: "\e9c7";
+}
 .icon-volume-on:before {
   content: "\ea26";
 }

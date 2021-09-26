@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/react-player/static/css/main.54aede85.chunk.css",
+    "main.js": "/react-player/static/js/main.6eb59977.chunk.js",
+    "main.js.map": "/react-player/static/js/main.6eb59977.chunk.js.map",
+    "runtime-main.js": "/react-player/static/js/runtime-main.0cb238fe.js",
+    "runtime-main.js.map": "/react-player/static/js/runtime-main.0cb238fe.js.map",
+    "static/js/2.8279e7c8.chunk.js": "/react-player/static/js/2.8279e7c8.chunk.js",
+    "static/js/2.8279e7c8.chunk.js.map": "/react-player/static/js/2.8279e7c8.chunk.js.map",
+    "index.html": "/react-player/index.html",
+    "static/css/main.54aede85.chunk.css.map": "/react-player/static/css/main.54aede85.chunk.css.map",
+    "static/js/2.8279e7c8.chunk.js.LICENSE.txt": "/react-player/static/js/2.8279e7c8.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/react-player/static/media/Iconfont.6179079a.svg",
+    "static/media/audio.1e8d9b45.mp3": "/react-player/static/media/audio.1e8d9b45.mp3",
+    "static/media/audio.5eb4c8be.mp3": "/react-player/static/media/audio.5eb4c8be.mp3",
+    "static/media/audio.e7f2cdf5.mp3": "/react-player/static/media/audio.e7f2cdf5.mp3",
+    "static/media/preview.18c9e94b.jpeg": "/react-player/static/media/preview.18c9e94b.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0cb238fe.js",
+    "static/js/2.8279e7c8.chunk.js",
+    "static/css/main.54aede85.chunk.css",
+    "static/js/main.6eb59977.chunk.js"
+  ]
+}

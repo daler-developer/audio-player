@@ -1,35 +1,75 @@
+import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { connect } from 'react-redux'
-import { selectCurrentAudioDuration } from 'redux/features/playerReducer'
+import { selectCurrentAudioDuration, selectCurrentTime } from 'redux/features/playerReducer'
 
+let mouseMoveHandler
 
 const Slider = (props) => {
+  const [mouseDown, setMouseDown] = useState(false)
+
   const circleRef = useRef(null)
   const progressRef = useRef(null)
-  const [isMouseDown, setIsMouseDown] = useState(false)
 
-  let moveListener;
+  useEffect(() => {
+    mouseMoveHandler = (e) => {
+      const circleRect = circleRef.current.getBoundingClientRect()
+      const progressRect = progressRef.current.getBoundingClientRect()
 
-  const initDrag = (e) => {
-    setIsMouseDown(true)
-    moveListener = document.addEventListener('mousemove', moveCircle)
-  }
+      let x
 
-  const endDrag = (e) => {
-    setIsMouseDown(false)
-    document.removeEventListener('mousemove', moveListener)
-  }
+      if (e.pageX < progressRect.x) {
+        x = 0
+      } else if (e.pageX > progressRect.right) {
+        x = progressRect.right - progressRect.x
+      } else {
+        x = e.pageX - progressRect.x
+      }
 
-  const moveCircle = (e) => {
-    const progressRect = progressRef.current.getBoundingClientRect()
-    const circleRect = circleRef.current.getBoundingClientRect()
-    const left = (e.clientX - progressRect.x) - (circleRect.width / 2)
-    circleRef.current.style.left = `${left}px`
-  }
+      circleRef.current.style.left = `${x}px`
+    }
+  }, [])
+
+  useEffect(() => {
+
+    if (mouseDown) {
+
+      document.addEventListener('pointerup', (e) => {
+        const circleRect = circleRef.current.getBoundingClientRect()
+        const progressRect = progressRef.current.getBoundingClientRect()
+
+        const percentage = ((circleRect.x + 10 - progressRect.x) / progressRect.width) * 100
+        const time = (percentage / 100) * props.duration
+
+        document.querySelector('.native-audio').currentTime = time
+
+        setMouseDown(false)
+      }, { once: true })
+
+      document.addEventListener('pointermove', mouseMoveHandler)
+
+    } else {
+
+      document.removeEventListener('pointermove', mouseMoveHandler)
+
+    }
+  }, [mouseDown])
+
+  useEffect(() => {
+    if (!mouseDown) {
+      const percentage = (props.currentTime / props.duration) * 100
+      circleRef.current.style.left = `${percentage}%`
+    }
+  }, [props.currentTime])
 
   const duration = {
     minutes: Math.floor(props.duration / 60),
     seconds: Math.floor(props.duration) - Math.floor(props.duration / 60) * 60
+  }
+
+  const currentTime = {
+    minutes: Math.floor(props.currentTime / 60),
+    seconds: Math.floor(props.currentTime) - Math.floor(props.currentTime / 60) * 60
   }
 
   return (
@@ -37,18 +77,19 @@ const Slider = (props) => {
 
       <div className={'slider__progress-wrapper'}>
         <div className={'slider__progress'} ref={progressRef}>
-          <div
+          <motion.div
             ref={circleRef}
             className={'slider__move-circle'}
-            onMouseDown={initDrag}
-            onMouseUp={endDrag}
-          ></div>
+            onPointerDown={() => setMouseDown(true)}
+            onDragStart={(e) => e.preventDefault()}
+          >
+          </motion.div>
         </div>
       </div>
 
       <div className={'slider__times'}>
         <span className={'slider__current-time'}>
-          1:40
+          {currentTime.minutes}:{currentTime.seconds < 10 && '0'}{currentTime.seconds}
         </span>
         <span className={'slider__duration'}>
           {duration.minutes}:{duration.seconds < 10 && '0'}{duration.seconds}
@@ -60,7 +101,8 @@ const Slider = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  duration: selectCurrentAudioDuration(state)
+  duration: selectCurrentAudioDuration(state),
+  currentTime: selectCurrentTime(state)
 })
 
 const mapDispatchToProps = {}
