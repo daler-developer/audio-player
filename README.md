@@ -19,8 +19,10 @@ Link: https://daler-developer.github.io/react-player/
 
 - Responsive and unique design
 - Playing preloaded audios(4)
-- Decreaes and increase volume
-- Sliding audio track
+- Mute and unmute audio
+- Audio track  
+ 
+And many more...
 
 ## Other info
 
