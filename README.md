@@ -4,7 +4,7 @@ Welcome to audio player, made using React!
 
 ## Demo:
 
-![Preview](/preview.jpg)
+![Preview](/preview.jpg)  
 Link: https://daler-developer.github.io/react-player/
 
 ## Tech Stack:
@@ -26,6 +26,6 @@ And many more...
 
 ## Other info
 
-Total time taken to complete: ~5 hours  
-Completed on the first attempt: Yes  
-Code quality and readability: 8/10  
+Total time taken to complete: *~5 hours*  
+Completed on the first attempt: *Yes*  
+Code quality and readability: *8/10*  
