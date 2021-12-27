@@ -1,31 +1,45 @@
-# Audio Player
+# Welcome to Image Gallery 👋
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
+[![Twitter: DalerSaidov2003](https://img.shields.io/twitter/follow/DalerSaidov2003.svg?style=social)](https://twitter.com/DalerSaidov2003)
 
-Welcome to audio player, made using React!
+> A music player.
 
-## Demo:
+### 🏠 [Homepage](https://daler-developer.github.io/react-player)
 
-![Preview](/preview.jpg)  
-**Link: https://daler-developer.github.io/react-player/**
+### ✨ [Demo](/preview.jpg)
 
-## Tech Stack:
+## Install
 
-- HTML5
-- CSS3
+```sh
+npm install
+```
+
+## Usage
+
+```sh
+npm start
+```
+
+## Run tests
+
+```sh
+npm run test
+```
+
+## Tech Stack
+
+- React/Redux
+- Audio API
 - Sass
-- React(Redux + Redux toolkit)
-- Iconmoon icons
 
-## Features:
+## Author
 
-- Responsive and unique design
-- Playing preloaded audios(4)
-- Mute and unmute audio
-- Audio track  
- 
-And many more...
+👤 **Saidov Daler**
 
-## Other info
+* Twitter: [@DalerSaidov2003](https://twitter.com/DalerSaidov2003)
+* Github: [@daler-developer](https://github.com/daler-developer)
 
-Total time taken to complete: *~5 hours*  
-Completed on the first attempt: *Yes*  
-Code quality and readability: *8/10*  
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
